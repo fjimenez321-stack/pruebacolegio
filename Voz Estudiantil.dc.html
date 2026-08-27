@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-f203ec68-e461-4e72-a388-64270db32e26/styles.css">
+<script src="_ds/organic-f203ec68-e461-4e72-a388-64270db32e26/_ds_bundle.js"></script>
+<style>
+body { margin: 0; }
+a.recuadro { text-decoration: none; color: inherit; display: block; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+a.recuadro:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+a.recuadro:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: var(--color-bg); padding: 0 0 var(--space-8);">
+
+  <header style="max-width: 1180px; margin: 0 auto; padding: var(--space-8) var(--space-6) var(--space-4);">
+    <div style="display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap;">
+      <img src="assets/escudo.png" alt="Escudo Colegio San Agustín" class="washed" style="width: 96px; height: auto;">
+      <div style="flex: 1 1 380px;">
+        <h1 style="font-size: clamp(40px, 7vw, 84px); letter-spacing: 0.02em; margin: 0 0 var(--space-1); color: var(--color-accent-800);">Voz Estudiantil</h1>
+        <p style="margin: 0; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-700);">El periódico estudiantil del Colegio San Agustín de Villa Alemana</p>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2);">
+        <span class="tag tag-accent" style="border-radius: 999px;">Lunes 17 de agosto 2026</span>
+        <span class="tag tag-outline" style="border-radius: 999px;">Edición del mes</span>
+      </div>
+    </div>
+    <div style="height: 4px; background: var(--color-accent); border-radius: 999px; margin-top: var(--space-6);"></div>
+  </header>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 0 var(--space-6); display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-6);">
+
+    <a href="#" class="recuadro card elev-md" style="grid-column: span 6; background: var(--color-accent-2-200); border-radius: var(--radius-lg); padding: var(--space-8);">
+      <div style="display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: var(--space-8);">
+        <div>
+          <span class="tag tag-accent-2" style="border-radius: 999px;">Academia Explora</span>
+          <h2 style="font-size: clamp(30px, 3.4vw, 46px); margin: var(--space-3) 0 var(--space-3); color: var(--color-accent-2-800);">La ciencia se hace presente en esta edición</h2>
+          <p style="margin: 0; color: var(--color-neutral-800);">En esta oportunidad queremos destacar y felicitar a las y los estudiantes de la Academia Explora, a cargo de la profesora Lizzette Maldonado, especialmente a las alumnas de tercero y cuarto medio que se encuentran participando en Ingenio Bioactivo de la Escuela de Ingeniería en Bioquímica de la Pontificia Universidad Católica de Valparaíso con sus proyectos de soluciones e innovación a partir de residuos orgánicos generados en el Mercado Cardonal de Valparaíso. ¡Mucho éxito!</p>
+          <sc-if value="{{ showBylines }}" hint-placeholder-val="{{ true }}">
+            <p style="margin: var(--space-4) 0 0; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-2-700);">Por Sofía Campos</p>
+          </sc-if>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+          <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: var(--space-4);">
+            <h4 style="margin: 0 0 var(--space-2); color: var(--color-accent-800);">Solve For Tomorrow</h4>
+            <p style="margin: 0; color: var(--color-neutral-800);">Estamos muy orgullosos de que las alumnas Maite Llano y Francisca Lobos pasaron a las segunda etapa de Solve For Tomorrow de Samsung, de más de 3400 proyectos presentados en todo el país su proyecto “Zanafil” quedó dentro de los 50 seleccionados.</p>
+          </div>
+          <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: var(--space-4);">
+            <h4 style="margin: 0 0 var(--space-2); color: var(--color-accent-800);">Bootcamp de IA 2026</h4>
+            <p style="margin: 0; color: var(--color-neutral-800);">Finalmente, destacar a las estudiantes de la Academia Explora de 1° medio, 3° medio y 4° medio que participaron en el Bootcamp de IA 2026 en representación de nuestro establecimiento. Sigan explorando para seguir creciendo.</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="recuadro card elev-sm" style="grid-column: span 2; background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-6);">
+      <span class="tag tag-accent" style="border-radius: 999px;">Departamento de Arte</span>
+      <h3 style="margin: var(--space-3) 0 var(--space-3); color: var(--color-accent-800);">Abrigarte 2026</h3>
+      <p style="margin: 0 0 var(--space-3); color: var(--color-neutral-800);">Destacamos a las y los estudiantes que participaron en la nueva versión del concurso escolar “Abrigarte”, convocatoria realizada por el Departamento de Arte del colegio Divina Maestra de Villa Alemana.</p>
+      <p style="margin: 0 0 var(--space-3); color: var(--color-neutral-800);">Destacamos la participación de Valentina Orellana de 8°Básico, Allison Contreras, Kyara Peters y José Lorca estudiantes de 4° Medio. ¡Felicitaciones!</p>
+      <p style="margin: 0; color: var(--color-neutral-800);">También agradecemos a la profesora Camila Juárez por fomentar el arte y la participación activa en los estudiantes de nuestro colegio.</p>
+    </a>
+
+    <a href="#" class="recuadro card elev-sm" style="grid-column: span 2; background: var(--color-accent-200); border-radius: var(--radius-lg); padding: var(--space-6);">
+      <span class="tag tag-neutral" style="border-radius: 999px;">Departamento Psicopedagógico</span>
+      <h3 style="margin: var(--space-3) 0 var(--space-3); color: var(--color-accent-800);">¡Aún sigue la Campaña del buen trato!</h3>
+      <p style="margin: 0 0 var(--space-3); color: var(--color-neutral-800);">La campaña del buen trato nos recuerda que debemos ser amables y respetuosos entre todos los miembros de nuestra comunidad y del entorno que nos rodea, y así construir un espacio seguro y armónico que nos premita crecer, desarrollarnos y aprender tranquilos.</p>
+      <p style="margin: 0 0 var(--space-3); color: var(--color-neutral-800);">Esta camapaña, organizada por el Departamento Psicopedagógico de nuestro colegio, sigue en desarrollo y queremos felicitar a todos los cursos que ya han participado.</p>
+      <p style="margin: 0; color: var(--color-neutral-800);">Les compartimos una muestra de los trabajos y temas abordados.</p>
+    </a>
+
+    <a href="#" class="recuadro card elev-sm" style="grid-column: span 2; background: var(--color-accent-2-300); border-radius: var(--radius-lg); padding: var(--space-6);">
+      <span class="tag tag-outline" style="border-radius: 999px;">Deporte escolar</span>
+      <h3 style="margin: var(--space-3) 0 var(--space-3); color: var(--color-accent-2-800);">Deportistas destacados</h3>
+      <p style="margin: 0 0 var(--space-4); color: var(--color-neutral-800);">En esta sección vamos a felicitar y agradecer a todos nuestros estudiantes que participan activamente en diversas competencias deportivas representando a nuestro colegio. Algunas de las disciplinas en la que se destacan son: Atletismo, fútbol (Sub 13) y taekwondo.</p>
+      <sc-if value="{{ showStudentList }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-1) var(--space-3); font-size: 13px; color: var(--color-accent-2-900);">
+          <span>Rodolfo · 6° Básico</span>
+          <span>Lucas · 6° Básico</span>
+          <span>Iván · 7° Básico</span>
+          <span>Gaspar · 7° Básico</span>
+          <span>Vicente E. · 7° Básico</span>
+          <span>Maximiliano · 7° Básico</span>
+          <span>Bastían · 7° Básico</span>
+          <span>Agustín A. · 7° Básico</span>
+          <span>Agustín D. · 7° Básico</span>
+          <span>Samuel · 7° Básico</span>
+          <span>Violeta · 7° Básico</span>
+          <span>Florencia · 5° Básico</span>
+          <span>Joaquín · 1° Medio</span>
+          <span>Fernanda · 1° Medio</span>
+          <span>Santiago · 3° Medio</span>
+        </div>
+      </sc-if>
+    </a>
+
+    <a href="#" class="recuadro card elev-md" style="grid-column: span 4; background: var(--color-neutral-900); color: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-8);">
+      <span class="tag" style="border-radius: 999px; background: var(--color-accent); color: var(--color-neutral-900);">Entrevista del mes</span>
+      <h2 style="font-size: clamp(28px, 3vw, 40px); margin: var(--space-3) 0 var(--space-4); color: var(--color-accent-300);">Profesor Gonzalo Oróstica</h2>
+      <p style="margin: 0 0 var(--space-4); color: var(--color-neutral-200); text-transform: uppercase; font-size: 14px; letter-spacing: 0.04em; line-height: 1.7;">Queremos felicitar con mucho entusiasmo al profesor de Educación Física, Gonzalo Oróstica, quien tras un gran esfuerzo logró posicionarse como Sub Campeón Panamericano de Kickboxing WAKO 2026. Torneo realizado en la comuna de Olmué.</p>
+      <p style="margin: 0; color: var(--color-neutral-300);">Como equipo queremos rescatar parte de la entrevista que en el año 2024 los estudiantes de la asignatura de Lectura y escrituras especializadas le realizaron al profesor Gonzalo Oróstica. Ya en esa ocasión nuestro profesor nos comentaba que en Chile llevar una carrera de deportista y, además, vivir de un trabajo era prácticamente incompatible. “Se puede hacer, pero el sacrificio es muy, muy, grande, mucho más grande de lo que la gente ve o piensa”. Esta es nuestra manera de reconocer sus esfuerzos y todos sus logros como deportista de alto rendimiento.</p>
+      <sc-if value="{{ showBylines }}" hint-placeholder-val="{{ true }}">
+        <p style="margin: var(--space-4) 0 0; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-300);">Por Katheryn López</p>
+      </sc-if>
+    </a>
+
+    <div style="grid-column: span 2; display: flex; flex-direction: column; gap: var(--space-6);">
+      <a href="#" class="recuadro card elev-sm" style="background: var(--color-accent-300); border-radius: var(--radius-lg); padding: var(--space-6); flex: 1 1 auto;">
+        <span class="tag tag-neutral" style="border-radius: 999px;">11 y 15 de septiembre</span>
+        <h3 style="margin: var(--space-3) 0 var(--space-3); color: var(--color-accent-900);">Feria Gastronómica 2026</h3>
+        <p style="margin: 0 0 var(--space-3); color: var(--color-accent-900);">El viernes 11 de septiembre podrás venir a disfrutar de la Feria Gastronómica en nuestro colegio. ¡Variadas opciones para disfrutar!</p>
+        <p style="margin: 0; color: var(--color-accent-900);">Además, nuestra festividad nacional se vivirá al máximo en la Gala folclórica 15 de septiembre. No te lo pierdas.</p>
+      </a>
+      <a href="#" class="recuadro card elev-sm" style="background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-6);">
+        <span class="tag tag-accent-2" style="border-radius: 999px;">Miércoles 16:00 – 16:45 hrs</span>
+        <h3 style="margin: var(--space-3) 0 var(--space-3); color: var(--color-accent-2-800);">Taller de inglés</h3>
+        <p style="margin: 0; color: var(--color-neutral-800);">Queremos recordar que el taller de inglés que imparte el Profesor César Jorquera se realiza todos los miércoles desde las 16:00 a 16:45 hrs.</p>
+      </a>
+    </div>
+
+  </main>
+
+  <footer style="max-width: 1180px; margin: var(--space-8) auto 0; padding: 0 var(--space-6);">
+    <div style="border-top: 1px solid var(--color-divider); padding-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center;">
+      <p style="margin: 0; color: var(--color-neutral-700);">Estudiantes encargados de esta edición: Sofía Campos, Kateryn López y Eva González</p>
+      <a href="#" class="btn btn-primary" style="border-radius: 999px;">Ediciones anteriores</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showBylines&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showStudentList&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showBylines: this.props.showBylines ?? true,
+      showStudentList: this.props.showStudentList ?? true,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
