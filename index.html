@@ -1,303 +1,406 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/organic-f203ec68-e461-4e72-a388-64270db32e26/styles.css">
-<script src="_ds/organic-f203ec68-e461-4e72-a388-64270db32e26/_ds_bundle.js"></script>
+<title>Voz Estudiantil — Visor digital</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  /* Primario: blanco */
-  --color-bg: #ffffff;
-  --color-surface: #ffffff;
-  --color-divider: #e4dfd4;
-
-  /* Secundario 1: azul (identidad institucional) */
-  --color-accent-200: #dde9f6;
-  --color-accent-300: #c1d9f0;
-  --color-accent: #2f5f8f;
-  --color-accent-700: #234a70;
-  --color-accent-800: #1c3a58;
-  --color-accent-900: #142a40;
-
-  /* Secundario 2: beige (calido, papel) */
-  --color-accent-2-200: #f2e9d8;
-  --color-accent-2-300: #e8d9bd;
-  --color-accent-2: #b99a63;
-  --color-accent-2-700: #7c633a;
-  --color-accent-2-800: #5f4c2d;
-  --color-accent-2-900: #43371f;
-
-  /* Neutros: grises tenues sobre blanco */
-  --color-neutral-100: #f7f5f0;
-  --color-neutral-200: #d9d4c8;
-  --color-neutral-300: #c3bcac;
-  --color-neutral-700: #6b6558;
-  --color-neutral-800: #3f3b32;
-  --color-neutral-900: #211e18;
-
-  --shadow-lg: 0 16px 32px rgba(28, 58, 88, 0.14);
+:root{
+  --blanco:#ffffff;
+  --azul:#2f5f8f; --azul-800:#1c3a58; --azul-200:#dde9f6;
+  --beige:#b99a63; --beige-200:#f2e9d8; --beige-800:#5f4c2d;
+  --gris-100:#f7f5f0; --gris-300:#c3bcac; --gris-700:#6b6558; --gris-900:#211e18;
+  --sombra:0 18px 40px rgba(20,42,64,.20);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{
+  font-family:'Source Sans 3',Arial,sans-serif;
+  background:var(--blanco); color:var(--gris-900);
+  min-height:100vh; display:flex; flex-direction:column;
 }
 
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--color-bg); }
-
-.ve-page {
-  font-family: 'Source Sans 3', Arial, sans-serif;
-  color: var(--color-neutral-800);
-  background: var(--color-bg);
+/* ---------- Encabezado ---------- */
+.visor-head{
+  padding:18px 24px 12px; border-bottom:4px solid var(--azul);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; flex-wrap:wrap; flex:none;
 }
-.ve-shell { max-width: 1220px; margin: 0 auto; padding: 32px 24px 64px; }
-
-/* Masthead */
-.ve-masthead { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.ve-masthead-left { display: flex; align-items: center; gap: 22px; }
-.ve-crest { width: 74px; height: auto; flex: none; }
-.ve-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: clamp(36px, 6vw, 70px); letter-spacing: 0.06em; margin: 0; color: var(--color-neutral-900); line-height: 0.95; }
-.ve-meta { text-align: right; }
-.ve-date { font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--color-neutral-900); }
-.ve-edition-tag { display: inline-block; margin-top: 8px; padding: 4px 14px; border: 1px solid var(--color-accent); color: var(--color-accent-800); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; border-radius: 999px; }
-
-.ve-subtitle-bar { text-align: center; margin-top: 18px; padding: 12px 0; border-top: 4px solid var(--color-accent); border-bottom: 1px solid var(--color-neutral-900); font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-neutral-800); font-weight: 700; }
-
-/* Layout grid */
-.ve-grid { display: grid; grid-template-columns: 220px 1fr 300px; gap: 0; margin-top: 8px; }
-.ve-col { padding: 24px 22px; }
-.ve-col-left { padding-left: 0; border-right: 1px solid var(--color-neutral-300); }
-.ve-col-right { border-left: 1px solid var(--color-neutral-300); }
-
-@media (max-width: 900px) {
-  .ve-grid { grid-template-columns: 1fr; }
-  .ve-col-left, .ve-col-right { border: none; padding-left: 0; padding-right: 0; }
+.visor-title{
+  font-family:'Playfair Display',Georgia,serif; font-weight:900;
+  letter-spacing:.05em; font-size:clamp(21px,4vw,32px);
+  margin:0; line-height:1;
+}
+.visor-sub{
+  margin:4px 0 0; font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gris-700); font-weight:700;
+}
+.visor-edicion{
+  padding:6px 15px; border:1px solid var(--azul); border-radius:999px;
+  font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--azul-800); font-weight:700; white-space:nowrap;
 }
 
-/* Type helpers */
-.ve-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 6px; }
-.ve-h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; margin: .1em 0 .28em; color: var(--color-neutral-900); line-height: 1.05; }
-.ve-h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; margin: .1em 0 .3em; color: var(--color-neutral-900); line-height: 1.1; }
-.ve-byline { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--color-neutral-700); margin: 0 0 12px; }
-.ve-body p { margin: 0 0 .9em; font-size: 14.5px; line-height: 1.62; }
-.ve-body p:last-child { margin-bottom: 0; }
-.ve-small p { font-size: 13px; line-height: 1.58; }
+/* ---------- Escenario ---------- */
+.escenario{
+  flex:1 1 auto; min-height:0; position:relative; overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--azul-200) 0%, rgba(221,233,246,0) 62%),
+    var(--gris-100);
+  display:flex; align-items:center; justify-content:center; padding:24px 16px;
+}
+.libro{
+  position:relative; display:flex; gap:0;
+  perspective:2400px; transform-origin:center center;
+}
+.hoja{
+  position:relative; background:var(--blanco);
+  box-shadow:var(--sombra); overflow:hidden; flex:none;
+}
+.hoja img{display:block; width:100%; height:100%; object-fit:contain; background:var(--blanco)}
+.hoja--vacia{background:var(--gris-100); box-shadow:none}
 
-.ve-rule { border: none; border-top: 1px solid var(--color-neutral-900); margin: 30px 0; }
-.ve-rule--light { border-top: 1px solid var(--color-neutral-300); margin: 22px 0; }
+/* Hoja que gira */
+.leaf{
+  position:absolute; top:0; z-index:30;
+  transform-style:preserve-3d; transition:transform .62s cubic-bezier(.5,.02,.35,1);
+  pointer-events:none;
+}
+.leaf .cara{
+  position:absolute; inset:0; backface-visibility:hidden;
+  background:var(--blanco); box-shadow:var(--sombra); overflow:hidden;
+}
+.leaf .cara img{display:block;width:100%;height:100%;object-fit:contain}
+.leaf .cara--tras{transform:rotateY(180deg)}
+@media (prefers-reduced-motion:reduce){ .leaf{transition-duration:.01ms} }
 
-/* Photo placeholders (reemplazar por fotos reales) */
-.ve-photo { aspect-ratio: 4 / 3; background: var(--color-neutral-100); border: 1px dashed var(--color-accent-300); border-radius: 4px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: var(--color-neutral-700); padding: 10px; }
-.ve-photo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
-.ve-photo--square { aspect-ratio: 1 / 1; }
-.ve-photo--wide { aspect-ratio: 16 / 9; }
+/* ---------- Estado ---------- */
+.estado{
+  position:absolute; inset:0; z-index:50; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:14px; text-align:center;
+  background:var(--gris-100); padding:28px;
+}
+.estado[hidden]{display:none}
+.spinner{
+  width:36px;height:36px;border-radius:50%;
+  border:3px solid var(--azul-200); border-top-color:var(--azul);
+  animation:girar .9s linear infinite;
+}
+@keyframes girar{to{transform:rotate(360deg)}}
+.estado p{margin:0;font-size:14px;color:var(--gris-700);max-width:440px;line-height:1.55}
+.estado strong{display:block;color:var(--azul-800);font-size:15.5px;margin-bottom:6px}
+.estado code{background:var(--azul-200);padding:1px 6px;border-radius:4px;font-size:12.5px}
 
-/* Lista de estudiantes */
-.ve-list { columns: 2; column-gap: 22px; list-style: none; padding: 0; margin: 14px 0 0; font-size: 13.5px; }
-.ve-list li { break-inside: avoid; padding: 4px 0; border-bottom: 1px dotted var(--color-neutral-300); }
+/* ---------- Controles ---------- */
+.controles{
+  flex:none; border-top:1px solid var(--gris-300); background:var(--blanco);
+  padding:12px 20px; display:flex; align-items:center; justify-content:center;
+  gap:9px; flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:9px 16px; border-radius:999px; border:1px solid var(--gris-300);
+  background:var(--blanco); color:var(--azul-800);
+  font-family:inherit; font-size:13.5px; font-weight:700; cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+  text-decoration:none;
+}
+.btn:hover:not(:disabled){background:var(--azul-200);border-color:var(--azul)}
+.btn:disabled{opacity:.38;cursor:not-allowed}
+.btn-primario{background:var(--azul);border-color:var(--azul);color:#fff}
+.btn-primario:hover:not(:disabled){background:var(--azul-800);border-color:var(--azul-800);color:#fff}
+.btn-beige{background:var(--beige-200);border-color:var(--beige);color:var(--beige-800)}
+.btn-beige:hover:not(:disabled){background:var(--beige);color:#fff}
+.indicador{
+  min-width:104px; text-align:center; font-size:13px; font-weight:700;
+  color:var(--gris-700); letter-spacing:.04em;
+}
+.sep{width:1px;height:24px;background:var(--gris-300);margin:0 3px}
+:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+input[type=file]{display:none}
 
-/* Cajas laterales */
-.ve-box { background: var(--color-neutral-100); border-left: 4px solid var(--color-accent); border-radius: 0 8px 8px 0; padding: 16px 18px; margin-bottom: 22px; }
-.ve-box--beige { background: var(--color-accent-2-200); border-left-color: var(--color-accent-2); }
-.ve-box .ve-h3 { color: var(--color-neutral-900); }
-.ve-box--beige .ve-eyebrow { color: var(--color-accent-2-800); }
-
-.ve-credits { font-size: 12px; color: var(--color-neutral-700); padding-bottom: 16px; margin-bottom: 18px; border-bottom: 1px solid var(--color-neutral-300); }
-.ve-credits strong { color: var(--color-neutral-900); }
-
-/* Panel foto + cita profesor */
-.ve-quote-card { margin-bottom: 24px; }
-.ve-quote-text { font-weight: 800; text-transform: uppercase; font-size: 12.5px; line-height: 1.65; letter-spacing: .01em; color: var(--color-neutral-900); border-left: 4px solid var(--color-accent); background: var(--color-accent-200); padding: 12px 15px; margin-top: 10px; border-radius: 0 6px 6px 0; }
-
-/* Miniaturas Abrigarte */
-.ve-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
-.ve-thumb { aspect-ratio: 1 / 1; background: var(--color-surface); border: 1px dashed var(--color-accent-2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; text-align: center; color: var(--color-accent-2-800); padding: 4px; }
-
-/* Banda destacada inferior */
-.ve-feature { margin-top: 8px; padding-top: 28px; border-top: 5px solid var(--color-accent); display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
-.ve-feature-text { border-left: 4px solid var(--color-accent-2); padding-left: 22px; }
-@media (max-width: 800px) { .ve-feature { grid-template-columns: 1fr; } .ve-feature-text { border-left: none; padding-left: 0; border-top: 4px solid var(--color-accent-2); padding-top: 16px; } }
-
-/* Pie */
-.ve-footer { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--color-neutral-300); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-.ve-btn { display: inline-block; padding: 10px 22px; background: var(--color-accent); color: #fff; text-decoration: none; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: .03em; transition: background .18s ease; }
-.ve-btn:hover { background: var(--color-accent-800); }
-
-a.ve-link { color: var(--color-accent-800); }
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+@media (max-width:640px){
+  .escenario{padding:12px 8px}
+  .controles{padding:10px 12px;gap:6px}
+  .btn{padding:8px 12px;font-size:12.5px}
+  .sep{display:none}
+  .indicador{order:-1;width:100%;font-size:12px}
+}
 </style>
-</helmet>
+</head>
+<body>
 
-<div class="ve-page">
-<div class="ve-shell">
-
-  <!-- MASTHEAD -->
-  <header class="ve-masthead">
-    <div class="ve-masthead-left">
-      <img src="assets/escudo.png" alt="Escudo Colegio San Agustín" class="ve-crest">
-      <h1 class="ve-title">Voz Estudiantil</h1>
-    </div>
-    <div class="ve-meta">
-      <div class="ve-date">Lunes 17 de agosto 2026</div>
-      <span class="ve-edition-tag">Edición del mes</span>
-    </div>
-  </header>
-  <p class="ve-subtitle-bar">El periódico estudiantil del Colegio San Agustín de Villa Alemana</p>
-
-  <!-- GRID PRINCIPAL -->
-  <div class="ve-grid">
-
-    <!-- COLUMNA IZQUIERDA -->
-    <aside class="ve-col ve-col-left">
-      <p class="ve-credits"><strong>Estudiantes encargados de esta edición:</strong> Sofía Campos, Katheryn López y Eva González.</p>
-
-      <div class="ve-box">
-        <p class="ve-eyebrow">Departamento Psicopedagógico</p>
-        <h3 class="ve-h3">¡Aún sigue la Campaña del buen trato!</h3>
-        <div class="ve-body ve-small">
-          <p>La campaña del buen trato nos recuerda que debemos ser amables y respetuosos entre todos los miembros de nuestra comunidad y del entorno que nos rodea, y así construir un espacio seguro y armónico que nos permita crecer, desarrollarnos y aprender tranquilos.</p>
-          <p>Esta campaña, organizada por el Departamento Psicopedagógico de nuestro colegio, sigue en desarrollo y queremos felicitar a todos los cursos que ya han participado.</p>
-          <p>Les compartimos una muestra de los trabajos y temas abordados.</p>
-        </div>
-      </div>
-      <div class="ve-photo" style="margin-bottom: 22px;">📷 Espacio para foto — afiche "El buen trato se contagia"</div>
-    </aside>
-
-    <!-- COLUMNA CENTRAL -->
-    <section class="ve-col">
-      <span class="ve-eyebrow">Deporte escolar</span>
-      <h2 class="ve-h2">Deportistas destacados</h2>
-      <sc-if value="{{ showBylines }}" hint-placeholder-val="{{ true }}">
-        <p class="ve-byline">Por Sofía Campos</p>
-      </sc-if>
-      <div class="ve-body">
-        <p>En esta sección vamos a felicitar y agradecer a todos nuestros estudiantes que participan activamente en diversas competencias deportivas representando a nuestro colegio. Algunas de las disciplinas en las que se destacan son: Atletismo, fútbol (Sub 13) y taekwondo.</p>
-      </div>
-      <div class="ve-photo-row">
-        <div class="ve-photo">📷 Espacio para foto — equipo de atletismo</div>
-        <div class="ve-photo">📷 Espacio para foto — taekwondo</div>
-      </div>
-      <sc-if value="{{ showStudentList }}" hint-placeholder-val="{{ true }}">
-        <ul class="ve-list">
-          <li>Rodolfo · 6° Básico</li>
-          <li>Lucas · 6° Básico</li>
-          <li>Iván · 7° Básico</li>
-          <li>Gaspar · 7° Básico</li>
-          <li>Vicente E. · 7° Básico</li>
-          <li>Maximiliano · 7° Básico</li>
-          <li>Bastián · 7° Básico</li>
-          <li>Agustín A. · 7° Básico</li>
-          <li>Agustín D. · 7° Básico</li>
-          <li>Samuel · 7° Básico</li>
-          <li>Violeta · 7° Básico</li>
-          <li>Florencia · 5° Básico</li>
-          <li>Joaquín · 1° Medio</li>
-          <li>Fernanda · 1° Medio</li>
-          <li>Santiago · 3° Medio</li>
-        </ul>
-      </sc-if>
-
-      <hr class="ve-rule">
-
-      <span class="ve-eyebrow" style="text-align:center; display:block;">11 y 15 de septiembre</span>
-      <h2 class="ve-h2" style="text-align:center;">Feria Gastronómica 2026</h2>
-      <div class="ve-body" style="text-align:center; max-width: 560px; margin: 0 auto;">
-        <p>El viernes 11 de septiembre podrás venir a disfrutar de la Feria Gastronómica en nuestro colegio. ¡Variadas opciones para disfrutar!</p>
-        <p>Además, nuestra festividad nacional se vivirá al máximo en la Gala folclórica del 15 de septiembre. No te lo pierdas.</p>
-      </div>
-      <div class="ve-photo ve-photo--wide" style="margin-top: 14px;">📷 Espacio para foto — afiche Feria Gastronómica 2026</div>
-
-      <hr class="ve-rule">
-
-      <span class="ve-eyebrow">Entrevista del mes</span>
-      <h2 class="ve-h2">Profesor Gonzalo Oróstica</h2>
-      <sc-if value="{{ showBylines }}" hint-placeholder-val="{{ true }}">
-        <p class="ve-byline">Por Katheryn López</p>
-      </sc-if>
-      <div class="ve-photo ve-photo--wide" style="margin-bottom: 14px;">📷 Espacio para foto — profesor Gonzalo Oróstica</div>
-      <div class="ve-body">
-        <p>Como equipo queremos rescatar parte de la entrevista que en el año 2024 los estudiantes de la asignatura de Lectura y escrituras especializadas le realizaron al profesor Gonzalo Oróstica. Ya en esa ocasión nuestro profesor nos comentaba que en Chile llevar una carrera de deportista y, además, vivir de un trabajo era prácticamente incompatible. "Se puede hacer, pero el sacrificio es muy, muy grande, mucho más grande de lo que la gente ve o piensa". Esta es nuestra manera de reconocer sus esfuerzos y todos sus logros como deportista de alto rendimiento.</p>
-      </div>
-    </section>
-
-    <!-- COLUMNA DERECHA -->
-    <aside class="ve-col ve-col-right">
-      <div class="ve-quote-card">
-        <h3 class="ve-h3">Profesor Gonzalo Oróstica</h3>
-        <sc-if value="{{ showBylines }}" hint-placeholder-val="{{ true }}">
-          <p class="ve-byline">Por Eva González</p>
-        </sc-if>
-        <div class="ve-photo ve-photo--square">📷 Espacio para foto — profesor con medalla</div>
-        <p class="ve-quote-text">Queremos felicitar con mucho entusiasmo al profesor de Educación Física, Gonzalo Oróstica, quien tras un gran esfuerzo logró posicionarse como Sub Campeón Panamericano de Kickboxing WAKO 2026. Torneo realizado en la comuna de Olmué.</p>
-      </div>
-
-      <div class="ve-box">
-        <p class="ve-eyebrow">Miércoles 16:00 – 16:45 hrs</p>
-        <h3 class="ve-h3">Taller de inglés</h3>
-        <div class="ve-body ve-small">
-          <p>Queremos recordar que el taller de inglés que imparte el Profesor César Jorquera se realiza todos los miércoles desde las 16:00 a 16:45 hrs.</p>
-        </div>
-      </div>
-
-      <div class="ve-box ve-box--beige">
-        <p class="ve-eyebrow">Departamento de Arte</p>
-        <h3 class="ve-h3">Abrigarte 2026</h3>
-        <div class="ve-body ve-small">
-          <p>Destacamos a las y los estudiantes que participaron en la nueva versión del concurso escolar "Abrigarte", convocatoria realizada por el Departamento de Arte del colegio Divina Maestra de Villa Alemana.</p>
-          <p>Destacamos la participación de Valentina Orellana de 8° Básico, Allison Contreras, Kyara Peters y José Lorca, estudiantes de 4° Medio. ¡Felicitaciones!</p>
-          <p>También agradecemos a la profesora Camila Juárez por fomentar el arte y la participación activa en los estudiantes de nuestro colegio.</p>
-        </div>
-        <div class="ve-thumbs">
-          <div class="ve-thumb">📷 Foto 1</div>
-          <div class="ve-thumb">📷 Foto 2</div>
-          <div class="ve-thumb">📷 Foto 3</div>
-        </div>
-      </div>
-    </aside>
-
+<header class="visor-head">
+  <div>
+    <h1 class="visor-title">Voz Estudiantil</h1>
+    <p class="visor-sub">Colegio San Agustín de Villa Alemana</p>
   </div>
+  <span class="visor-edicion">Edición · Agosto 2026</span>
+</header>
 
-  <!-- BANDA DESTACADA: LA CIENCIA -->
-  <div class="ve-feature">
-    <div class="ve-feature-text">
-      <span class="ve-eyebrow">Academia Explora</span>
-      <h2 class="ve-h2">La ciencia se hace presente en esta edición</h2>
-      <sc-if value="{{ showBylines }}" hint-placeholder-val="{{ true }}">
-        <p class="ve-byline">Por Sofía Campos</p>
-      </sc-if>
-      <div class="ve-body">
-        <p>En esta oportunidad queremos destacar y felicitar a las y los estudiantes de la Academia Explora, a cargo de la profesora Lizzette Maldonado, especialmente a las alumnas de tercero y cuarto medio que se encuentran participando en Ingenio Bioactivo de la Escuela de Ingeniería en Bioquímica de la Pontificia Universidad Católica de Valparaíso con sus proyectos de soluciones e innovación a partir de residuos orgánicos generados en el Mercado Cardonal de Valparaíso. ¡Mucho éxito!</p>
-        <p>Estamos muy orgullosos de que las alumnas Maite Llano y Francisca Lobos pasaron a la segunda etapa de Solve For Tomorrow de Samsung: de más de 3.400 proyectos presentados en todo el país, su proyecto "Zanafil" quedó dentro de los 50 seleccionados.</p>
-        <p>Finalmente, destacar a las estudiantes de la Academia Explora de 1° medio, 3° medio y 4° medio que participaron en el Bootcamp de IA 2026 en representación de nuestro establecimiento. Sigan explorando para seguir creciendo.</p>
-      </div>
-    </div>
-    <div class="ve-photo" style="height: 100%; min-height: 220px;">📷 Espacio para foto — estudiantes en la PUCV</div>
+<div class="escenario" id="escenario">
+  <div class="libro" id="libro"></div>
+  <div class="estado" id="estado">
+    <div class="spinner" aria-hidden="true"></div>
+    <p id="estadoTexto">Preparando la edición…</p>
   </div>
-
-  <!-- PIE -->
-  <footer class="ve-footer">
-    <p style="margin:0; font-size:12.5px; color: var(--color-neutral-700);">© Colegio San Agustín de Villa Alemana — Voz Estudiantil</p>
-    <a href="#" class="ve-btn">Ediciones anteriores</a>
-  </footer>
-
-</div>
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showBylines&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showStudentList&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
-class Component extends DCLogic {
-  renderVals() {
-    return {
-      showBylines: this.props.showBylines ?? true,
-      showStudentList: this.props.showStudentList ?? true,
-    };
+<nav class="controles" aria-label="Controles del visor">
+  <button class="btn" id="btnPrev" type="button">‹ Anterior</button>
+  <span class="indicador" id="indicador">— / —</span>
+  <button class="btn" id="btnNext" type="button">Siguiente ›</button>
+  <span class="sep" aria-hidden="true"></span>
+  <button class="btn" id="btnZoomOut" type="button">− Alejar</button>
+  <button class="btn" id="btnZoomIn" type="button">+ Acercar</button>
+  <span class="sep" aria-hidden="true"></span>
+  <button class="btn btn-beige" id="btnAbrir" type="button">Abrir PDF</button>
+  <button class="btn btn-beige" id="btnFull" type="button">Pantalla completa</button>
+  <a class="btn btn-primario" id="btnDescargar" href="voz-estudiantil-2026-08.pdf" download>Descargar</a>
+  <input type="file" id="archivo" accept="application/pdf">
+</nav>
+
+<!-- Única dependencia externa: PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ===== CONFIGURACIÓN =====
+  var PDF_URL = 'voz-estudiantil-2026-08.pdf';  // cambia esto para publicar otra edición
+  var ESCALA  = 2.0;    // nitidez del render
+  var CALIDAD = 0.85;   // compresión JPEG
+
+  var escenario  = document.getElementById('escenario');
+  var libro      = document.getElementById('libro');
+  var estado     = document.getElementById('estado');
+  var estadoTxt  = document.getElementById('estadoTexto');
+  var indicador  = document.getElementById('indicador');
+  var btnPrev    = document.getElementById('btnPrev');
+  var btnNext    = document.getElementById('btnNext');
+  var btnZoomIn  = document.getElementById('btnZoomIn');
+  var btnZoomOut = document.getElementById('btnZoomOut');
+  var btnFull    = document.getElementById('btnFull');
+  var btnAbrir   = document.getElementById('btnAbrir');
+  var archivo    = document.getElementById('archivo');
+
+  var paginas = [];      // dataURL por página
+  var total   = 0;
+  var indice  = 0;       // índice de la hoja izquierda del pliego actual
+  var prop    = 1.294;   // alto/ancho
+  var zoom    = 1;
+  var girando = false;
+
+  function doble() { return window.innerWidth >= 860 && total > 1; }
+
+  function aviso(titulo, detalle) {
+    estado.hidden = false;
+    estado.innerHTML = '<p><strong>' + titulo + '</strong>' + (detalle || '') + '</p>' +
+      '<button class="btn btn-beige" id="reintentar" type="button">Abrir PDF desde mi equipo</button>';
+    var r = document.getElementById('reintentar');
+    if (r) r.addEventListener('click', function () { archivo.click(); });
   }
-}
+
+  // ===== CARGA =====
+  if (!window.pdfjsLib) {
+    aviso('No se pudo cargar PDF.js.', 'Revisa tu conexion a internet y recarga la pagina.');
+    return;
+  }
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  function abrir(origen) {
+    estado.hidden = false;
+    estado.innerHTML = '<div class="spinner" aria-hidden="true"></div><p id="estadoTexto">Preparando la edicion...</p>';
+    estadoTxt = document.getElementById('estadoTexto');
+    paginas = []; indice = 0; girando = false;
+
+    pdfjsLib.getDocument(origen).promise.then(function (pdf) {
+      total = pdf.numPages;
+      var cadena = Promise.resolve();
+      var acc = [];
+      for (var i = 1; i <= total; i++) {
+        (function (n) {
+          cadena = cadena.then(function () {
+            return render(pdf, n).then(function (img) { acc.push(img); });
+          });
+        })(i);
+      }
+      return cadena.then(function () { return acc; });
+    }).then(function (imgs) {
+      paginas = imgs;
+      estado.hidden = true;
+      dibujar();
+    }).catch(function (err) {
+      console.error(err);
+      aviso('No se pudo abrir el PDF.',
+        'Coloca <code>' + PDF_URL + '</code> junto a este archivo y abrelo desde un servidor web ' +
+        '(por ejemplo <code>python3 -m http.server</code>). O selecciona el PDF manualmente:');
+    });
+  }
+
+  function render(pdf, n) {
+    return pdf.getPage(n).then(function (pagina) {
+      var vp = pagina.getViewport({ scale: ESCALA });
+      if (n === 1) prop = vp.height / vp.width;
+      var c = document.createElement('canvas');
+      c.width = vp.width; c.height = vp.height;
+      if (estadoTxt) estadoTxt.textContent = 'Preparando pagina ' + n + ' de ' + pdf.numPages + '...';
+      return pagina.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise
+        .then(function () { return c.toDataURL('image/jpeg', CALIDAD); });
+    });
+  }
+
+  // ===== MEDIDAS =====
+  function medidas() {
+    var cols = doble() ? 2 : 1;
+    var dispAlto  = escenario.clientHeight - 34;
+    var dispAncho = escenario.clientWidth - 30;
+    var alto = dispAlto, ancho = alto / prop;
+    if (ancho * cols > dispAncho) { ancho = dispAncho / cols; alto = ancho * prop; }
+    return { ancho: Math.round(ancho), alto: Math.round(alto) };
+  }
+
+  // ===== DIBUJO =====
+  function dibujar() {
+    var m = medidas();
+    libro.innerHTML = '';
+    libro.style.transform = 'scale(' + zoom + ')';
+
+    var cols = doble() ? 2 : 1;
+    for (var k = 0; k < cols; k++) {
+      var n = indice + k;
+      var hoja = document.createElement('div');
+      hoja.className = 'hoja' + (paginas[n] ? '' : ' hoja--vacia');
+      hoja.style.width = m.ancho + 'px';
+      hoja.style.height = m.alto + 'px';
+      if (paginas[n]) {
+        var img = document.createElement('img');
+        img.src = paginas[n];
+        img.alt = 'Pagina ' + (n + 1) + ' de ' + total;
+        hoja.appendChild(img);
+      }
+      libro.appendChild(hoja);
+    }
+    actualizar();
+  }
+
+  function actualizar() {
+    var cols = doble() ? 2 : 1;
+    var desde = indice + 1;
+    var hasta = Math.min(indice + cols, total);
+    indicador.textContent = total
+      ? (desde === hasta ? desde + ' / ' + total : desde + '-' + hasta + ' / ' + total)
+      : '- / -';
+    btnPrev.disabled = girando || indice <= 0;
+    btnNext.disabled = girando || indice + cols >= total;
+    btnZoomIn.disabled = zoom >= 3;
+    btnZoomOut.disabled = zoom <= 0.6;
+  }
+
+  // ===== PASAR PAGINA (CSS 3D propio) =====
+  function pasar(dir) {
+    var cols = doble() ? 2 : 1;
+    if (girando) return;
+    if (dir > 0 && indice + cols >= total) return;
+    if (dir < 0 && indice <= 0) return;
+
+    var m = medidas();
+    var siguiente = indice + dir * cols;
+    var frenteIdx = dir > 0 ? indice + cols - 1 : indice;
+    var traseIdx  = dir > 0 ? siguiente : siguiente + cols - 1;
+
+    if (!paginas[frenteIdx]) { indice = siguiente; dibujar(); return; }
+
+    girando = true; actualizar();
+
+    var leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.style.width = m.ancho + 'px';
+    leaf.style.height = m.alto + 'px';
+    leaf.style.left = (dir > 0 && cols === 2 ? m.ancho : 0) + 'px';
+    leaf.style.transformOrigin = dir > 0 ? 'left center' : 'right center';
+
+    leaf.innerHTML =
+      '<div class="cara cara--frente"><img src="' + paginas[frenteIdx] + '" alt=""></div>' +
+      '<div class="cara cara--tras">' + (paginas[traseIdx] ? '<img src="' + paginas[traseIdx] + '" alt="">' : '') + '</div>';
+
+    libro.appendChild(leaf);
+    void leaf.offsetWidth; // fuerza reflow para que la transicion se aplique
+    leaf.style.transform = 'rotateY(' + (dir > 0 ? -180 : 180) + 'deg)';
+
+    setTimeout(function () {
+      indice = siguiente;
+      girando = false;
+      dibujar();
+    }, 640);
+  }
+
+  btnPrev.addEventListener('click', function () { pasar(-1); });
+  btnNext.addEventListener('click', function () { pasar(1); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') pasar(-1);
+    if (e.key === 'ArrowRight') pasar(1);
+  });
+
+  // Deslizar en movil
+  var x0 = null;
+  escenario.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  escenario.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 55) pasar(dx < 0 ? 1 : -1);
+    x0 = null;
+  }, { passive: true });
+
+  // ===== ZOOM =====
+  btnZoomIn.addEventListener('click', function () {
+    zoom = Math.min(3, Math.round((zoom + 0.25) * 100) / 100);
+    libro.style.transform = 'scale(' + zoom + ')'; actualizar();
+  });
+  btnZoomOut.addEventListener('click', function () {
+    zoom = Math.max(0.6, Math.round((zoom - 0.25) * 100) / 100);
+    libro.style.transform = 'scale(' + zoom + ')'; actualizar();
+  });
+
+  // ===== PANTALLA COMPLETA =====
+  btnFull.addEventListener('click', function () {
+    if (!document.fullscreenElement) {
+      if (escenario.requestFullscreen) escenario.requestFullscreen().catch(function(){});
+    } else { document.exitFullscreen(); }
+  });
+  document.addEventListener('fullscreenchange', function () {
+    btnFull.textContent = document.fullscreenElement ? 'Salir' : 'Pantalla completa';
+    setTimeout(dibujar, 130);
+  });
+
+  // ===== ABRIR ARCHIVO LOCAL =====
+  btnAbrir.addEventListener('click', function () { archivo.click(); });
+  archivo.addEventListener('change', function (e) {
+    var f = e.target.files[0];
+    if (!f) return;
+    var lector = new FileReader();
+    lector.onload = function () { abrir({ data: new Uint8Array(lector.result) }); };
+    lector.readAsArrayBuffer(f);
+  });
+
+  // ===== RESPONSIVE =====
+  var t;
+  window.addEventListener('resize', function () {
+    clearTimeout(t);
+    t = setTimeout(function () { if (paginas.length) dibujar(); }, 180);
+  });
+
+  // Arranque
+  abrir(PDF_URL);
+
+})();
 </script>
+
 </body>
 </html>
